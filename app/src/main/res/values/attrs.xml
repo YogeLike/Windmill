@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Windmill">
+        <attr name="windmillColors" format="color|reference"/>
+        <attr name="windLengthPerent" format="float" />
+    </declare-styleable>
+</resources>
