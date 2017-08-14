@@ -4,7 +4,9 @@
 最近在做一个天气预报的app。因为本人使用的是华为的手机。发现华为自带的天气预报软件还挺好看的。所以我的天气预报软件的主界面就主要模仿华为天气了。地址在这[OneWeather](https://github.com/YugengWang/OneWeather.git "一个天气").
 
 这个转动风车是其中的一个自定义View。自我感觉做完后效果还是不错的。新手一枚，有什么可以完善或者理解错误的地方欢迎提出哦。
+
 效果如下：
+
 ![风车](http://i.imgur.com/ZLwBhnU.gif)
 
 ## 1. 概述
@@ -13,7 +15,9 @@
 ## 2. 变量和初始化
 
 弧度是叶片离原始位置的弧度
+
 以风车中间点为圆心和原点，即(x1,y1).
+
 圆心与其他四个点连线，所以会有四个弧度和四个斜边。(x1,y1)与(x2,y2)为r1 和 rad1 ，以此类推。
 ```java
 private Paint mWindmillPaint; //支柱画笔
@@ -52,7 +56,9 @@ private Paint mWindmillPaint; //支柱画笔
 ## 3. 绘制风车
 
 柱子和叶片的绘制都用了贝塞尔曲线，其实用直线也可以。如果你没听过贝塞尔曲线，你可以搜索了解，[简书上的一篇教程](http://www.jianshu.com/p/55c721887568),其实我也没仔细看过，貌似很多漂亮的自定义View都会用到，或者记住贝塞尔曲线是让尖锐的角变成一条弧线就行了。
+
 `mWindPath.cubicTo(x2,y2,x3,y3,x4,y4);`
+
 `mWindPath.quadTo(x5,y5,x1,y1);`
 这两个函数就是画贝塞尔曲线的。
 
@@ -105,7 +111,8 @@ private void drawPillar(Canvas canvas) {
 
 
 使用属性动画	ObjectAnimator，
-设置重复次数，弧度变化范围从0~2PI 也就是360度，线性变化
+
+设置重复次数，弧度变化范围从0~2PI 也就是360度，线性变化.
 
 ```java
 mAnimator = ObjectAnimator.ofFloat(this,"angle",0,(float)(2*PI));//
@@ -122,6 +129,7 @@ windSpeed 控制风车的速度，其实就是缩短动画周期
 
 ### 初始点的弧度和斜边的计算
 这里我是以初始叶片位于y轴正半轴来计算的，
+
 rad 是 与x轴正半轴的夹角的弧度，
 
 这里width/15 ,width/30 这些是用来控制叶片的厚度的，可以更改，不过要保持弧度和斜边了对应数值的一致。其实应该弄一个变量的。
@@ -156,10 +164,10 @@ r1为斜边
 >cos = 邻/斜
 
 ```java
-		x2 = mCenterPoint.x + (float) (r1 * Math.cos(rad1 + angle));
-        y2 = mCenterPoint.y + (float) (r1 * Math.sin(rad1 + angle));
-        x3 = mCenterPoint.x + (float) (r2 * Math.cos(rad2 + angle));
-        y3 = mCenterPoint.y + (float) (r2 * Math.sin(rad2 + angle));
+x2 = mCenterPoint.x + (float) (r1 * Math.cos(rad1 + angle));
+y2 = mCenterPoint.y + (float) (r1 * Math.sin(rad1 + angle));
+x3 = mCenterPoint.x + (float) (r2 * Math.cos(rad2 + angle));
+y3 = mCenterPoint.y + (float) (r2 * Math.sin(rad2 + angle));
 ```
 
 
@@ -175,6 +183,8 @@ r1为斜边
 <attr name="windLengthPerent" format="float" />
 ```
 ### 布局
+大小，颜色，叶片占比都可以随意设置。
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
