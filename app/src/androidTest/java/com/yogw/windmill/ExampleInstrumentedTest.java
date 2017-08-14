@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.yogw.windmill", appContext.getPackageName());
+        assertEquals("com.yogw.windmill_big", appContext.getPackageName());
     }
 }

@@ -35,7 +35,7 @@ public class Windmill extends View {
     private double rad1,rad2,rad3,rad4;//弧度
     private double r1,r2,r3,r4;//斜边
     private ObjectAnimator mAnimator;//动画
-    private float angle;//旋转角度
+    private float angle;//旋转弧度
     private int windSpeed = 1;
 
 
@@ -113,17 +113,17 @@ public class Windmill extends View {
         y1 = mCenterPoint.y;
 
         //radian(弧度)
-        rad1 = atan(width/15/(width/20)); //x1,y1与x2,y2形成的角,以圆点为坐标原点,返回角度为-pi/2 至 pi/2  artan（y/x）
-        rad2 = atan(width/7/(width/20));//x1,y1 与 x3,y3
+        rad1 = atan(width/15/(width/30)); //x1,y1与x2,y2形成的角,以圆点为坐标原点,返回角度为-pi/2 至 pi/2  artan（y/x）
+        rad2 = atan(width/6/(width/30));//x1,y1 与 x3,y3
         rad3 = PI/2;//tan90 不存在
-        rad4 = atan(mCenterPoint.y/2/(-width/20))+PI;//因为返回角度为 -pi/2 至pi,所以加PI
+        rad4 = atan(mCenterPoint.y/2/(-width/30))+PI;//因为返回角度为 -pi/2 至pi,所以加PI
 
 
-        //r 为斜边长度
-        r1 = Math.hypot(width/15,width/20);
-        r2 = Math.hypot(width/20,width/7);
+        //r 为斜边长度,与上面要对应
+        r1 = Math.hypot(width/30,width/15);
+        r2 = Math.hypot(width/30,width/6);
         r3 = Math.hypot(0,mCenterPoint.y);
-        r4 = Math.hypot(width/20,mCenterPoint.y/2);
+        r4 = Math.hypot(width/30,mCenterPoint.y/2);
 
 
 
@@ -171,7 +171,6 @@ public class Windmill extends View {
 
         mWindPath.cubicTo(x2,y2,x3,y3,x4,y4);
         mWindPath.quadTo(x5,y5,x1,y1);
-        mWindPath.close();
         canvas.drawPath(mWindPath,mWindmillPaint);
         canvas.rotate(120,mCenterPoint.x,mCenterPoint.y);
         canvas.drawPath(mWindPath,mWindmillPaint);

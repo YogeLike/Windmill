@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Windmill windmill;
+    Windmill windmill_big;
+    Windmill windmill_small;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        windmill = (Windmill) findViewById(R.id.windmill);
-        windmill.setWindSpeed(6);
+        windmill_big = (Windmill) findViewById(R.id.windmill_big);
+        windmill_big.setWindSpeed(6);
+        windmill_small = (Windmill) findViewById(R.id.windmill_small);
+        windmill_small.setWindSpeed(6);
 
 
     }
@@ -19,13 +22,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        windmill.startAnimation();
-
+        windmill_big.startAnimation();
+        windmill_small.startAnimation();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        windmill.clearAnimation();
+        windmill_big.clearAnimation();
+        windmill_small.clearAnimation();
     }
 }
